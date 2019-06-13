@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,StatusBar,TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View,TextInput, StatusBar,TouchableOpacity} from 'react-native';
 
 import Logo from '../components/Logo';
 import Form from '../components/Form';
@@ -12,11 +12,34 @@ export default class Login extends Component<Props> {
            Actions.signup() 
     }
 
+    Details(){
+      Actions.details() 
+    }
     render() {
       return (
         <View style={styles.container}>
             <Logo/>
-            <Form type="Login"/>
+            {/* <Form type="Login" holdertype="Email/Number" passwordholdertype="Password"/> */}
+
+            <TextInput style={styles.inputBox} 
+              underlineColorAndroid='rgba(0,0,0,0)' 
+              placeholder={"Email/Number"}
+              placeholderTextColor="#ffffff"
+              selectionColor="#fff"
+              keyboardType="email-address"
+              onSubmitEditing={()=> this.password.focus()}/>
+
+              <TextInput style={styles.inputBox} 
+              underlineColorAndroid='rgba(0,0,0,0)' 
+              placeholder={"Password"}
+              secureTextEntry={true}
+              placeholderTextColor="#ffffff"
+              ref={(input) => this.password =input} />
+
+              <TouchableOpacity onPress={this.Details} style={styles.button}>
+                  <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+            
             <View style={styles.signupContainer}>
                 <Text style={styles.signupText}>Don't have an account yet?</Text>
                 <TouchableOpacity onPress={this.signup}>
@@ -50,5 +73,29 @@ export default class Login extends Component<Props> {
         color:"#ffffff",
         fontSize:16,
         fontWeight:'500'
+    },
+    inputBox: {
+      width:300,
+      backgroundColor:'rgba(255,255,255,0.3)',
+      borderRadius: 25,
+      paddingHorizontal:16,
+      fontSize:16,
+      color:"#ffffff",
+      marginVertical:10
+    },
+
+    button:{
+      width:200,
+      backgroundColor:'#1a0000',
+      borderRadius: 25,
+      marginVertical:10,
+      paddingVertical:10
+    },
+
+    buttonText:{
+      fontSize:16,
+      fontWeight:'500',
+      color:'#ffffff',
+      textAlign:'center'
     }
 });

@@ -19,11 +19,12 @@ export default class Login extends Component<Props> {
     container: {
       flexGrow: 1,
       alignItems: 'center',
-      justifyContent: 'flex-end'
+      justifyContent: 'center',
+      // marginVertical: 30
     },
     logoText :{
         marginVertical: 15,
-        fontSize:18,
+        fontSize:20,
         color:'rgba(255,255,255,0.7)'
     }
 });

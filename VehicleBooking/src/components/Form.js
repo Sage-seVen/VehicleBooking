@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,TextInput, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 
 export default class Login extends Component<Props> {
+    
+    
     render() {
       return (
           <View style={styles.container}>
               <TextInput style={styles.inputBox} 
               underlineColorAndroid='rgba(0,0,0,0)' 
-              placeholder="Enter Email"
+              placeholder={this.props.holdertype}
               placeholderTextColor="#ffffff"
               selectionColor="#fff"
               keyboardType="email-address"
@@ -15,12 +17,12 @@ export default class Login extends Component<Props> {
 
               <TextInput style={styles.inputBox} 
               underlineColorAndroid='rgba(0,0,0,0)' 
-              placeholder="Enter Password"
+              placeholder={this.props.passwordholdertype}
               secureTextEntry={true}
               placeholderTextColor="#ffffff"
               ref={(input) => this.password =input} />
 
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity onPress={this.Details} style={styles.button}>
                   <Text style={styles.buttonText}>{this.props.type}</Text>
               </TouchableOpacity>
           </View>
