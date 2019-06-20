@@ -2,12 +2,43 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, Image, StatusBar,TouchableOpacity} from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+import { Dropdown } from 'react-native-material-dropdown';
 
 export default class Details extends Component<Props> {
     
     render() {
+      let data = [{
+        value: 'Winterfell',
+      }, {
+        value: 'Kings Landing',
+      }, {
+        value: 'Dorne',
+      }];
+
+      let Seatdata = [{
+        value: '4',
+      }, {
+        value: '6',
+      }, {
+        value: '8',
+      }];
+
+      let Timedata = [{
+        value: '1',
+      }, {
+        value: '2',
+      }, {
+        value: '3',
+      },{
+        value:'4',
+      },{
+        value:'5',
+      },{
+        value:'7',
+      }];
+
       return (
-        <View style={styles.container}>
+        <View style={styles.container} >
             <View style={styles.Titlecontainer}>
                 <Text style={styles.Title} > Book a Ride </Text>
                 <Image style={{width: 200, height: 80}}
@@ -15,7 +46,25 @@ export default class Details extends Component<Props> {
             />
             </View>
 
-            <View style={styles.Detailcontainer}>
+            <View style={styles.MatContainer}>
+                <Dropdown
+                label='Self-Pickup Location'
+                data={data}
+                // fontSize={18}
+                // baseColor="#ffffff"
+                />
+                <Dropdown
+                label='Seats'
+                data={Seatdata}
+                />
+                <Dropdown
+                label='Days'
+                data={Timedata}
+                />
+            </View>
+            
+
+            {/* <View style={styles.Detailcontainer}>
             <TextInput style={styles.inputBox} 
               underlineColorAndroid='rgba(0,0,0,0)' 
               placeholder={"Pick Up"}
@@ -29,10 +78,10 @@ export default class Details extends Component<Props> {
               placeholderTextColor="#ffffff"
               selectionColor="#fff"
               ref={(input) => this.dropoff =input}/>
-            </View>
+            </View> */}
 
             <View style={styles.confirmContainer}>
-                <TouchableOpacity onPress={this.signup} style={styles.button}>
+                <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>Confirm Ride</Text>
                 </TouchableOpacity>
             </View>
@@ -45,7 +94,7 @@ export default class Details extends Component<Props> {
     
     container: {
       flex: 1,
-      alignItems: 'center',
+      // alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#3e2723'
     },
@@ -60,6 +109,10 @@ export default class Details extends Component<Props> {
         flexGrow: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    MatContainer:{
+      paddingHorizontal:16,
     },
 
     Title :{
@@ -79,7 +132,7 @@ export default class Details extends Component<Props> {
 
     confirmContainer:{
         flexGrow:1,
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'center',
         paddingVertical:16,
         // flexDirection:'row'
