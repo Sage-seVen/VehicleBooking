@@ -1,11 +1,53 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, Image, StatusBar,TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, Text, View, TextInput, Image, Button, StatusBar,TouchableOpacity} from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
 import { Dropdown } from 'react-native-material-dropdown';
+import DateTimePicker from "react-native-modal-datetime-picker";
 
 export default class Details extends Component<Props> {
-    
+    constructor(props) {
+      super(props);
+      this.state = {
+        startDateTimePickerVisible: false,
+        endDateTimePickerVisible: false,
+        selecteddate:'',
+        selectedenddate:''
+      };
+    }
+  
+    showStartDateTimePicker = () =>
+    this.setState({ startDateTimePickerVisible: true });
+  
+    showEndDateTimePicker = () => 
+    this.setState({ endDateTimePickerVisible: true });
+  
+    hideStartDateTimePicker = () =>
+    this.setState({ startDateTimePickerVisible: false });
+  
+    hideEndDateTimePicker = () =>
+    this.setState({ endDateTimePickerVisible: false });
+  
+    handleStartDatePicked = (pickeddate) => {
+      day   = pickeddate.getDate();
+      month = pickeddate.getMonth();
+      year  = pickeddate.getFullYear();
+      console.log('A date has been picked: ' + day + '-' + month + '-' + year);
+      exdate= day + '-' + month + '-' + year
+      this.setState({selecteddate : day + '-' + month + '-' + year}) 
+      this.hideStartDateTimePicker();
+    };
+  
+    handleEndDatePicked = (pickeddate) => {
+      day   = pickeddate.getDate();
+      month = pickeddate.getMonth();
+      year  = pickeddate.getFullYear();
+      console.log('A date has been picked: ' + day + '-' + month + '-' + year);
+      exdate= day + '-' + month + '-' + year
+      this.setState({selectedenddate : day + '-' + month + '-' + year})
+      this.hideEndDateTimePicker();
+    };
+
     render() {
       let data = [{
         value: 'Winterfell',
@@ -23,30 +65,40 @@ export default class Details extends Component<Props> {
         value: '8',
       }];
 
-      let Timedata = [{
-        value: '1',
-      }, {
-        value: '2',
-      }, {
-        value: '3',
-      },{
-        value:'4',
-      },{
-        value:'5',
-      },{
-        value:'7',
-      }];
-
       return (
         <View style={styles.container} >
             <View style={styles.Titlecontainer}>
                 <Text style={styles.Title} > Book a Ride </Text>
                 <Image style={{width: 200, height: 80}}
-                source={require('../images/carlogo5.png')}
-            />
+                source={require('../images/carlogo5.png')}/>
             </View>
 
             <View style={styles.MatContainer}>
+                <Button color="#6a4f4b" title="Pick-Up Date" onPress={this.showStartDateTimePicker} />
+                <DateTimePicker
+                  isVisible={this.state.startDateTimePickerVisible}
+                  onConfirm={this.handleStartDatePicked}
+                  onCancel={this.hideStartDateTimePicker}
+                />
+                <TextInput 
+                placeholder="Select Date"
+                onFocus={ () => this.showStartDateTimePicker() }
+                value={this.state.selecteddate}
+                />
+
+                <Button color="#6a4f4b" title="Drop-off Date" onPress={this.showEndDateTimePicker} />
+                <DateTimePicker
+                  isVisible={this.state.endDateTimePickerVisible}
+                  onConfirm={this.handleEndDatePicked}
+                  onCancel={this.hideEndDateTimePicker}
+                />
+                <TextInput 
+                placeholder="Select Date"
+                onFocus={ () => this.showEndDateTimePicker() }
+                value={this.state.selectedenddate}
+                />
+
+
                 <Dropdown
                 label='Self-Pickup Location'
                 data={data}
@@ -57,13 +109,9 @@ export default class Details extends Component<Props> {
                 label='Seats'
                 data={Seatdata}
                 />
-                <Dropdown
-                label='Days'
-                data={Timedata}
-                />
+
             </View>
             
-
             {/* <View style={styles.Detailcontainer}>
             <TextInput style={styles.inputBox} 
               underlineColorAndroid='rgba(0,0,0,0)' 
@@ -112,7 +160,7 @@ export default class Details extends Component<Props> {
     },
 
     MatContainer:{
-      paddingHorizontal:16,
+      paddingHorizontal:17,
     },
 
     Title :{
