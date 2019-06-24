@@ -6,6 +6,12 @@ import { Dropdown } from 'react-native-material-dropdown';
 import DateTimePicker from "react-native-modal-datetime-picker";
 
 export default class Details extends Component<Props> {
+
+  Result(){
+		Actions.result();
+  }
+  
+
     constructor(props) {
       super(props);
       this.state = {
@@ -65,6 +71,13 @@ export default class Details extends Component<Props> {
         value: '8',
       }];
 
+      let carType =[{
+        value: 'Normal',
+      },{
+        value: 'Mini',
+      },{
+        value: 'Premium'
+      }];
       return (
         <View style={styles.container} >
             <View style={styles.Titlecontainer}>
@@ -110,6 +123,11 @@ export default class Details extends Component<Props> {
                 data={Seatdata}
                 />
 
+                <Dropdown
+                label='Segment'
+                data={carType}
+                />
+
             </View>
             
             {/* <View style={styles.Detailcontainer}>
@@ -129,8 +147,8 @@ export default class Details extends Component<Props> {
             </View> */}
 
             <View style={styles.confirmContainer}>
-                <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Confirm Ride</Text>
+                <TouchableOpacity onPress={this.Result} style={styles.button}>
+                <Text style={styles.buttonText}> Confirm </Text>
                 </TouchableOpacity>
             </View>
         </View>
