@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,TextInput, StatusBar,TouchableOpacity} from 'react-native';
+import {ToastAndroid} from "react-native";
 
 import Logo from '../components/Logo';
 import Form from '../components/Form';
@@ -13,7 +14,8 @@ export default class Login extends Component<Props> {
     }
 
     Details(){
-      Actions.details() 
+      Actions.details();
+      ToastAndroid.show("Login Successful!", ToastAndroid.SHORT); 
     }
     render() {
       return (

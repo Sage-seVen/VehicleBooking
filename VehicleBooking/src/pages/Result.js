@@ -6,7 +6,6 @@ TouchableOpacity, ScrollView}
 from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
-import Details from './Details';
 
 export default class Result extends Component<Props>{
 	
@@ -28,11 +27,35 @@ export default class Result extends Component<Props>{
 						source={require('../images/carlogo5.png')}/>
 					</View>
 					<View style={styles.confirmContainer}>
-						<Text> Vehicle Type: </Text>
-						<Text> Model: </Text>
-						<Text> Price: </Text>
-						<Text> Free KMs: </Text>
-                        {/* <Text> {Details.state.selectedpickup}</Text> */}
+						<View style={styles.infoContainer}>
+                            <Text style={styles.label}> Vehicle Type: </Text>
+                            <Text style={styles.labeltext}> {this.props.text2} </Text>
+                        </View>
+
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.label}> Seats Needed: </Text>
+                            <Text style={styles.labeltext}> {this.props.text1} </Text>
+                        </View>
+
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.label}> Self Pickup from: </Text>
+                            <Text style={styles.labeltext}> " {this.props.text} " on </Text>
+                        </View>
+
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.label}> Pickup Date: </Text>
+                            <Text style={styles.labeltext}> {this.props.date1} to </Text>
+                        </View>
+
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.label}> Drop Date: </Text>
+                            <Text style={styles.labeltext}> {this.props.date2} </Text>
+                        </View>
+                        <View style={styles.infoContainer}>
+                            <Text style={styles.label}> Pricing Info: </Text>
+                            <Text style={styles.labeltext}> Mini-150, Normal-200, Premium-300 </Text>
+                        </View>
+						<Text style={styles.labeltext}> *All Prices per day </Text>
 					</View> 
 					<View style={styles.conContainer}>
 						<TouchableOpacity onPress={this.Confirmation} style={styles.button}>
@@ -89,7 +112,8 @@ export default class Result extends Component<Props>{
         flexGrow:1,
         alignItems: 'flex-start',
         justifyContent: 'center',
-        paddingVertical:16,
+        paddingVertical:20,
+        marginVertical:16
         // flexDirection:'row'
     },
 	
@@ -115,5 +139,23 @@ export default class Result extends Component<Props>{
     fontWeight:'500',
     color:'#ffffff',
     textAlign:'center'
+    },
+
+    infoContainer:{
+        // flexGrow:1,
+        // alignItems: 'flex-start',
+        // justifyContent: 'center',
+        // paddingVertical:16,
+        flexDirection:'row'
+    },
+
+    label:{
+        color:'#fdd835',
+        fontSize:16,
+    },
+
+    labeltext:{
+        fontSize:16,
+        color:'#ffffff',
     }
 });

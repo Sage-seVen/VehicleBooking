@@ -7,9 +7,9 @@ import DateTimePicker from "react-native-modal-datetime-picker";
 
 export default class Details extends Component<Props> {
 
-  Result(){
-		Actions.result();
-  }
+  // Result(){
+	// 	Actions.result({text: 'Hello World!'});
+  // }
   
 
     constructor(props) {
@@ -57,10 +57,10 @@ export default class Details extends Component<Props> {
       this.hideEndDateTimePicker();
     };
 
-    onChangeHandler =(value)=>{
-      this.setState({selectedpickup: value})
-      this.setState({selectedseat:value})
-    };
+    // onChangeHandler =(value)=>{
+    //   this.setState({selectedpickup: value})
+    //   this.setState({selectedseat:value})
+    // };
 
     render() {
       let data = [{
@@ -86,6 +86,9 @@ export default class Details extends Component<Props> {
       },{
         value: 'Premium'
       }];
+
+      const Result = () => Actions.result({text: this.state.selectedpickup, text1:this.state.selectedseat, text2:this.state.selectedseg, date1:this.state.selecteddate,date2:this.state.selectedenddate});
+
       return (
         <View style={styles.container} >
             <View style={styles.Titlecontainer}>
@@ -126,22 +129,24 @@ export default class Details extends Component<Props> {
                 data={data}
                 // fontSize={18}
                 // baseColor="#ffffff"
-                onChangeText={(value => this.onChangeHandler(value))}
+                onChangeText={(value => this.setState({selectedpickup: value}))}
                 />
 
                 {/* <Text>{this.state.selectedpickup}</Text> */}
-                {/* <Text>{this.state.selectedpickup}</Text> */}
+                
                 <Dropdown
                 label='Seats'
                 data={Seatdata}
-                onChangeText={(value => this.onChangeHandler(value))}
+                onChangeText={(value => this.setState({selectedseat:value}))}
                 />
-                
+                {/* <Text>{this.state.selectedseat}</Text> */}
+
                 <Dropdown
                 label='Segment'
                 data={carType}
-                onChangeText={(value => this.onChangeHandler(value))}
+                onChangeText={(value => this.setState({selectedseg:value}))}
                 />
+                {/* <Text>{this.state.selectedseg}</Text> */}
 
             </View>
             
@@ -162,7 +167,7 @@ export default class Details extends Component<Props> {
             </View> */}
 
             <View style={styles.confirmContainer}>
-                <TouchableOpacity onPress={this.Result} style={styles.button}>
+                <TouchableOpacity onPress={Result} style={styles.button}>
                 <Text style={styles.buttonText}> Confirm </Text>
                 </TouchableOpacity>
             </View>

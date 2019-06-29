@@ -17,11 +17,11 @@ export default class Confirmation extends Component<Props>{
 						<Text style={styles.Title} > Ride Confirmed </Text>
 						<Image style={{width: 200, height: 80}}
 						source={require('../images/carlogo5.png')}/>
-                        <Image 
-                        source={require('../images/like2.png')}/>
 					</View>
 					<View style={styles.confirmContainer}>
-						<Text style={{color:'rgba(255,255,255,1.0)'}} > Your Ride Has Been Confirmed! </Text>
+                        <Image style={{width: 100, height: 100}}
+                        source={require('../images/like2.png')}/>
+						<Text style={styles.labeltext} > Your Ride Has Been Confirmed! </Text>
 					</View> 
 					
 				</ScrollView>
@@ -69,7 +69,7 @@ export default class Confirmation extends Component<Props>{
 
     confirmContainer:{
         flexGrow:1,
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
         paddingVertical:16,
         // flexDirection:'row'
@@ -96,5 +96,10 @@ export default class Confirmation extends Component<Props>{
     fontWeight:'500',
     color:'#ffffff',
     textAlign:'center'
+    },
+
+    labeltext:{
+        fontSize:16,
+        color:'#ffffff',
     }
 });

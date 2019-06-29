@@ -14,6 +14,7 @@ import {Platform, StyleSheet, Text, View,StatusBar} from 'react-native';
 
 import Routes from './src/Routes';
 
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -23,6 +24,7 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+    
   render() {
     return (
       <View style={styles.container}>
