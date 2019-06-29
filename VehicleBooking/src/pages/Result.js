@@ -6,6 +6,7 @@ TouchableOpacity, ScrollView}
 from 'react-native';
 
 import {Actions} from 'react-native-router-flux';
+import Details from './Details';
 
 export default class Result extends Component<Props>{
 	
@@ -31,6 +32,7 @@ export default class Result extends Component<Props>{
 						<Text> Model: </Text>
 						<Text> Price: </Text>
 						<Text> Free KMs: </Text>
+                        {/* <Text> {Details.state.selectedpickup}</Text> */}
 					</View> 
 					<View style={styles.conContainer}>
 						<TouchableOpacity onPress={this.Confirmation} style={styles.button}>

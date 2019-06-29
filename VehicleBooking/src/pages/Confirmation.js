@@ -16,11 +16,12 @@ export default class Confirmation extends Component<Props>{
 					<View style={styles.Titlecontainer}>
 						<Text style={styles.Title} > Ride Confirmed </Text>
 						<Image style={{width: 200, height: 80}}
-						source={require('../images/carlogo5.png')}
-					/>
+						source={require('../images/carlogo5.png')}/>
+                        <Image 
+                        source={require('../images/like2.png')}/>
 					</View>
 					<View style={styles.confirmContainer}>
-						<Text> Your Ride Has Been Confirmed! </Text>
+						<Text style={{color:'rgba(255,255,255,1.0)'}} > Your Ride Has Been Confirmed! </Text>
 					</View> 
 					
 				</ScrollView>
@@ -52,7 +53,7 @@ export default class Confirmation extends Component<Props>{
     },
 
     Title :{
-        fontSize:20,
+        fontSize:25,
         color:'rgba(255,255,255,1.0)'
     },
 

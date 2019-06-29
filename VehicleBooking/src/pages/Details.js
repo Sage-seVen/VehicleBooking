@@ -18,7 +18,10 @@ export default class Details extends Component<Props> {
         startDateTimePickerVisible: false,
         endDateTimePickerVisible: false,
         selecteddate:'',
-        selectedenddate:''
+        selectedenddate:'',
+        selectedpickup:'',
+        selectedseat:'',
+        selectedseg:'',
       };
     }
   
@@ -52,6 +55,11 @@ export default class Details extends Component<Props> {
       exdate= day + '-' + month + '-' + year
       this.setState({selectedenddate : day + '-' + month + '-' + year})
       this.hideEndDateTimePicker();
+    };
+
+    onChangeHandler =(value)=>{
+      this.setState({selectedpickup: value})
+      this.setState({selectedseat:value})
     };
 
     render() {
@@ -92,6 +100,7 @@ export default class Details extends Component<Props> {
                   isVisible={this.state.startDateTimePickerVisible}
                   onConfirm={this.handleStartDatePicked}
                   onCancel={this.hideStartDateTimePicker}
+
                 />
                 <TextInput 
                 placeholder="Select Date"
@@ -117,15 +126,21 @@ export default class Details extends Component<Props> {
                 data={data}
                 // fontSize={18}
                 // baseColor="#ffffff"
+                onChangeText={(value => this.onChangeHandler(value))}
                 />
+
+                {/* <Text>{this.state.selectedpickup}</Text> */}
+                {/* <Text>{this.state.selectedpickup}</Text> */}
                 <Dropdown
                 label='Seats'
                 data={Seatdata}
+                onChangeText={(value => this.onChangeHandler(value))}
                 />
-
+                
                 <Dropdown
                 label='Segment'
                 data={carType}
+                onChangeText={(value => this.onChangeHandler(value))}
                 />
 
             </View>
