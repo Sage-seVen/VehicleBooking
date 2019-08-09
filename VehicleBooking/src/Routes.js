@@ -47,7 +47,7 @@ export default class Routes extends Component<{}> {
                     <Scene key="signup" component={Signup} title="Signup"/>
                     <Scene key="details" component={Details} title="Details"/>
                     <Scene key="result" component={Result} title="Result" />
-					          <Scene key="Confirmation" component={Confirmation} title="Confirmation" />
+					<Scene key="Confirmation" component={Confirmation} title="Confirmation" />
                   </Stack>
                 </Router>
               )
