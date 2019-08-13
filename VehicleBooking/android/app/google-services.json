@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "931283457415",
+    "firebase_url": "https://vehiclebooking-38faf.firebaseio.com",
+    "project_id": "vehiclebooking-38faf",
+    "storage_bucket": "vehiclebooking-38faf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931283457415:android:013626165f0dc302",
+        "android_client_info": {
+          "package_name": "com.vehiclebooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931283457415-21js0h3q6geikvkj084nhufufir5lh41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT1czOgGMZf_slkGZQk9-NKvCSpRL6cqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931283457415-21js0h3q6geikvkj084nhufufir5lh41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
